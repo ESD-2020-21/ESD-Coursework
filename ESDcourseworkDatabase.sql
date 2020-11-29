@@ -1,4 +1,4 @@
-
+/* TO DO: Add foreign keys*/
 
 create table users(
 	UserName varchar(20) primary key,
@@ -8,7 +8,7 @@ create table users(
 
 create table patients(
 	PatientID int not null primary key
-            generated always as identity (start with 1, increment by 1),
+            generated always as identity (start with 1, increment by 1), 
 	PatientName varchar(50),
 	PatientAddress varchar(100),
 	PatientType varchar(10),
@@ -17,7 +17,7 @@ create table patients(
 
 create table employee(
 	EmployeeID int not null primary key
-            generated always as identity (start with 1, increment by 1),
+            generated always as identity (start with 1, increment by 1), 
 	EmployeeName varchar(50),
 	EmployeeAddress varchar(100),
 	UserName varchar(20) references users(UserName)
@@ -25,7 +25,7 @@ create table employee(
 
 create table operations(
     oID int not null primary key
-            generated always as identity (start with 1, increment by 1),
+            generated always as identity (start with 1, increment by 1), 
     EmployeeID int references employee(EmployeeID),
     PatientID int references patients(PatientID),
     OperationDate date,
@@ -55,3 +55,12 @@ INSERT INTO EMPLOYEE (EmployeeName, EmployeeAddress, UserName) VALUES ('Emin Ayd
 
 INSERT INTO Patients (PatientName, PatientAddress, PatientType, UserName) VALUES ('Charly Aidan', '14 King Street, Aberdeen, AB24 1BR', 'NHS', 'caidan');
 INSERT INTO Patients (PatientName, PatientAddress, PatientType, UserName) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
+
+
+
+INSERT INTO operations (OperationDate, OperationTime, nSlot, Invoice ) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2004-10-12', '10:00', 4, 67.8);
+INSERT INTO operations (OperationDate, OperationTime, nSlot, Invoice ) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2004-11-13', '14:00', 3, 60.7);
+INSERT INTO operations (OperationDate, OperationTime, nSlot, Invoice ) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2005-01-01', '13:00', 3, 33.4);
+
+INSERT INTO booking_slots (SlotDate, SlotTime) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2005-01-01', '13:00');
+INSERT INTO booking_slots (SlotDate, SlotTime) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2004-11-13', '14:00');
