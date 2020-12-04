@@ -1,4 +1,4 @@
-/* TO DO: Add foreign keys*/
+ /* TO DO:  Nothing, COMPLETE */ 
 
 create table users(
 	UserName varchar(20) primary key,
@@ -57,10 +57,11 @@ INSERT INTO Patients (PatientName, PatientAddress, PatientType, UserName) VALUES
 INSERT INTO Patients (PatientName, PatientAddress, PatientType, UserName) VALUES ('Prince Hassan', 'Non-UK street, Non-UK Town, Non_UK', 'private', 'princehassan');
 
 
+/* Doesnt work if you try and insert a value in a foreign key that doesnt exist in the primary key of that table.*/
+INSERT INTO operations (EmployeeID, PatientID, OperationDate, OperationTime, nSlot, Invoice ) VALUES (1,2, '2004-10-12', '10:00', 4, 67.8);
+INSERT INTO operations (EmployeeID, PatientID, OperationDate, OperationTime, nSlot, Invoice ) VALUES (2,2, '2004-11-13', '14:00', 3, 60.7);
+INSERT INTO operations (EmployeeID, PatientID, OperationDate, OperationTime, nSlot, Invoice ) VALUES (1,1, '2005-01-01', '13:00', 3, 33.4);
 
-INSERT INTO operations (OperationDate, OperationTime, nSlot, Invoice ) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2004-10-12', '10:00', 4, 67.8);
-INSERT INTO operations (OperationDate, OperationTime, nSlot, Invoice ) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2004-11-13', '14:00', 3, 60.7);
-INSERT INTO operations (OperationDate, OperationTime, nSlot, Invoice ) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2005-01-01', '13:00', 3, 33.4);
+INSERT INTO booking_slots (EmployeeID, PatientID, SlotDate, SlotTime) VALUES (1,2, '2005-01-01', '13:00');
+INSERT INTO booking_slots (EmployeeID, PatientID, SlotDate, SlotTime) VALUES (2,1,'2004-11-13', '14:00');
 
-INSERT INTO booking_slots (SlotDate, SlotTime) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2005-01-01', '13:00');
-INSERT INTO booking_slots (SlotDate, SlotTime) VALUES (/*(SELECT EmployeeID FROM EMPLOYEE WHERE ),*/ '2004-11-13', '14:00');
