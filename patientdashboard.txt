@@ -215,7 +215,7 @@
                                                             <sql:param value = "${PATIENTIDNUMBER}" />
                                                             <sql:param value = "${APPOINTDATE}" />
                                                             <sql:param value = "${APPOINTMENTSTART}" />
-                                                            <sql:param value = "${APPOINTMENTSTART}" />
+                                                            <sql:param value = "${RequestPrescription}" />
                                                             <sql:param value = "${EMPLOYEENUM}" />
                                                             
                                                             </sql:update> 

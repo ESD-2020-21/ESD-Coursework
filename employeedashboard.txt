@@ -184,28 +184,31 @@
                                                     </tr>
                                                 </thead>
                                                 <body>
-      <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
+      </table>
+          <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
          url = "jdbc:derby://localhost:1527/ESDCoursework"
          user = "yonis"  password = "yonis"/>
  <!----SELECT * FROM EMPLOYEE IS AN SQL STATEMENT THAT ALLOWS YOU TO VIEW THE EMPLOYEE TABLE-->
       <sql:query dataSource = "${snapshot}" var = "result">
-          SELECT * from EMPLOYEE
+          SELECT * from PATIENTS
       </sql:query>
           <!-- Change the EmployeeID, Name, Address, Username to all the column inside of the patient table--> 
           <!-- Also change the r(row.VARIABLENAME) to to all the column inside of the patient table--> 
       <table border = "1" width = "100%">
          <tr>
-            <th>EmployeeID</th>
-            <th>EmployeeName</th>
-            <th>EmployeeAddress</th>
+            <th>PatientID</th>
+            <th>PatientName</th>
+            <th>PatientAddress</th>
+            <th>PatientType</th>
             <th>Username</th>
          </tr>
          
          <c:forEach var = "row" items = "${result.rows}">
             <tr>
-               <td><c:out value = "${row.EmployeeID}"/></td>
-               <td><c:out value = "${row.EmployeeName}"/></td>
-               <td><c:out value = "${row.EmployeeAddress}"/></td>
+               <td><c:out value = "${row.PatientID}"/></td>
+               <td><c:out value = "${row.PatientName}"/></td>
+               <td><c:out value = "${row.PatientAddress}"/></td>
+               <td><c:out value = "${row.PatientType}"/></td>
                <td><c:out value = "${row.Username}"/></td>
             </tr>
          </c:forEach>
