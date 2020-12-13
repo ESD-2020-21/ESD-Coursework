@@ -1,0 +1,110 @@
+<%-- 
+    Document   : Register
+    Created on : Dec 8, 2020, 3:07:12 PM
+    Author     : Umair
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Register</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />
+        <!-- icons -->
+        <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- <link rel="stylesheet" href="../assets/plugins/iconic/css/material-design-iconic-font.min.css"> -->
+        <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+        <!-- bootstrap -->
+        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- style -->
+        <link rel="stylesheet" href="assets/css/pages/extra_pages.css">
+    </head>
+    <body>
+        <div class="limiter">
+            <div class="container-login100 page-background">
+                <div class="wrap-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-logo">
+                            <img alt="" src="assets/img/hospital.png">
+                        </span>
+                        <span class="login100-form-title p-b-34 p-t-27">
+                            Registration
+                        </span>
+                        <div class="row">
+                            <div class="col-lg-6 p-t-20">
+                                <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                                    <input class="input100" type="text" name="username" placeholder="Username">
+                                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-t-20">
+                                <div class="wrap-input100 validate-input" data-validate = "Enter Role">
+                                    <input class="input100" type="text" name="Role" placeholder="Role">
+                                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 p-t-20">
+                                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                                    <input class="input100" type="password" name="pass2" placeholder="password">
+                                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Remember me
+                            </label>
+                        </div>
+                        <div>
+                                                                       
+                        <?php
+
+                        function function1(){
+
+                            <sql:setDataSource var = "snapshot" driver = "org.apache.derby.jdbc.ClientDriver"
+                                url = "jdbc:derby://localhost:1527/ESDCoursework"
+                                user = "yonis"  password = "yonis"/>
+
+                            <c:set var = "inputusername" value = '<%= request.getParameter("username")%>'  />
+                            <c:set var = "inputpassword" value = '<%= request.getParameter("pass2")%>'  />
+                            <c:set var = "inputrole" value = '<%= request.getParameter("Role")%>'  />
+
+                            <sql:update dataSource = "${snapshot}" var = "result">
+                            INSERT INTO users (UserName, Password,Role) VALUES (?,?,?)
+                            <sql:param value = "${inputusername}" />
+                            <sql:param value = "${inputpassword}" />
+                            <sql:param value = "${inputrole}" />
+                            </sql:update> 
+
+
+                        }
+                        ?>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <button type="submit" class="btn btn-info" onclick = function1()>Submit</button>
+                                
+                            </button>
+                        </div>
+                        <div class="text-center p-t-30">
+                            <a class="txt1" href="Login.jsp">
+                                You already have a account? Login here
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- start js include path -->
+            <script src="assets/plugins/jquery/jquery.min.js" ></script>
+            <!-- bootstrap -->
+            <script src="assets/plugins/bootstrap/js/bootstrap.min.js" ></script>
+            <script src="assets/js/pages/extra_pages/extra_pages.js"></script>
+            <!-- end js include path -->
+    </body>
+</html>
